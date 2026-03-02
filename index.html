@@ -5,146 +5,214 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Haus of Bakes</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #fff6f9;
-        color: #5a4a4a;
-    }
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fff6f9;
+    color:#5a4a4a;
+}
 
-    header {
-        background: #f8d7e3;
-        padding: 30px 20px;
-        text-align: center;
-    }
+header{
+    background:#f8d7e3;
+    padding:30px 20px;
+    text-align:center;
+}
 
-    header h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 42px;
-        color: #b76e79;
-    }
+header h1{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    color:#b76e79;
+}
 
-    header p {
-        margin-top: 10px;
-        font-size: 16px;
-        color: #7a5c61;
-    }
+nav{
+    text-align:center;
+    padding:15px;
+    background:#fff0f5;
+    position:relative;
+}
 
-    nav {
-        text-align: center;
-        padding: 15px;
-        background: #fff0f5;
-    }
+nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:#b76e79;
+    font-weight:500;
+}
 
-    nav a {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #b76e79;
-        font-weight: 500;
-        transition: 0.3s;
-    }
+.cart-icon{
+    position:absolute;
+    right:20px;
+    top:15px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-    nav a:hover {
-        color: #8c4c57;
-    }
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(to right,#ffe4ec,#fff6f9);
+}
 
-    .hero {
-        text-align: center;
-        padding: 80px 20px;
-        background: linear-gradient(to right, #ffe4ec, #fff6f9);
-    }
+.section{
+    padding:60px 20px;
+    text-align:center;
+}
 
-    .hero h2 {
-        font-family: 'Playfair Display', serif;
-        font-size: 28px;
-        margin-bottom: 15px;
-        color: #b76e79;
-    }
+.section h2{
+    font-family:'Playfair Display',serif;
+    margin-bottom:40px;
+    font-size:30px;
+    color:#b76e79;
+}
 
-    .hero p {
-        font-size: 18px;
-        margin-bottom: 25px;
-    }
+.products{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
 
-    .btn {
-        background-color: #b76e79;
-        color: white;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: 0.3s;
-    }
+.card{
+    background:white;
+    padding:25px;
+    width:260px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(183,110,121,0.15);
+}
 
-    .btn:hover {
-        background-color: #8c4c57;
-    }
+.card h3{
+    margin-bottom:10px;
+    color:#b76e79;
+}
 
-    .section {
-        padding: 60px 20px;
-        text-align: center;
-    }
+.price{
+    font-weight:bold;
+    margin:10px 0;
+}
 
-    .section h2 {
-        font-family: 'Playfair Display', serif;
-        margin-bottom: 40px;
-        font-size: 30px;
-        color: #b76e79;
-    }
+.btn{
+    background:#b76e79;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+}
 
-    .products {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 25px;
-    }
+.btn:hover{
+    background:#8c4c57;
+}
 
-    .card {
-        background: white;
-        padding: 25px;
-        width: 260px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(183,110,121,0.15);
-        transition: 0.3s;
-    }
+/* CART */
+.cart{
+    position:fixed;
+    right:-350px;
+    top:0;
+    width:300px;
+    height:100%;
+    background:white;
+    box-shadow:-5px 0 15px rgba(0,0,0,0.1);
+    padding:20px;
+    transition:0.4s;
+    overflow-y:auto;
+}
+.cart.active{
+    right:0;
+}
 
-    .card:hover {
-        transform: translateY(-8px);
-    }
+.cart h3{
+    margin-bottom:20px;
+}
 
-    .card h3 {
-        margin-bottom: 10px;
-        color: #b76e79;
-    }
+.cart-item{
+    margin-bottom:10px;
+    font-size:14px;
+}
 
-    .about {
-        background: #ffeef3;
-    }
+.total{
+    margin-top:20px;
+    font-weight:bold;
+}
 
-    footer {
-        background: #f8d7e3;
-        text-align: center;
-        padding: 20px;
-        font-size: 14px;
-        color: #7a5c61;
-    }
+.close-cart{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    color:#b76e79;
+}
 
-    @media(max-width: 768px) {
-        .products {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
+/* WhatsApp Floating Button */
+.whatsapp-float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:25px;
+    right:25px;
+    background:#25D366;
+    color:white;
+    border-radius:50%;
+    text-align:center;
+    font-size:30px;
+    line-height:60px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    z-index:1000;
+    text-decoration:none;
+}
+
+.whatsapp-float:hover{
+    background:#1ebe5d;
+}
+
+/* Cart upgrade */
+.cart-item{
+    margin-bottom:15px;
+    font-size:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.quantity-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.qty-btn{
+    background:#b76e79;
+    color:white;
+    border:none;
+    padding:4px 8px;
+    cursor:pointer;
+    border-radius:5px;
+}
+.remove-btn{
+    background:none;
+    border:none;
+    color:red;
+    cursor:pointer;
+}
+
+.order-btn{
+    margin-top:15px;
+    width:100%;
+}
+footer {
+    width: 100%;           /* full width */
+    text-align: center;     /* center the text horizontally */
+    padding: 20px 0;        /* space above & below */
+    font-size: 14px;        /* text size */
+    color: #7a5c61;         /* text color */
+    background: #f8d7e3;    /* background color */
+    margin: 0 auto;         /* remove default margin */
+}
 </style>
 </head>
 
@@ -155,67 +223,168 @@
          style="vertical-align: middle; margin-right:10px;">
     
     <h1 style="display:inline;">Haus of Bakes</h1>
-    <p> Baked with love,served with joy </p>
+    <p>Baked with Love, Served With Joy 🍰</p>
 </header>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#about">Our Story</a>
-    <a href="#contact">Contact</a>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">Our Story</a>
+<a href="#contact">Contact</a>
+<span class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</span>
 </nav>
 
-<section class="hero" id="home">
-    <h2>Freshly Baked with Love</h2>
-    <p>Where every bite feels like home.</p>
-    <button class="btn">Order Now</button>
+<section class="hero">
+<h2>Freshly Baked with Love</h2>
+<p>Where every bite feels like home.</p>
+<button class="btn">Order Now</button>
 </section>
 
 <section class="section" id="menu">
-    <h2>Our Favorites</h2>
-    <div class="products">
-        <div class="card">
-            <h3>Rose Vanilla Cake</h3>
-            <p>Light sponge layered with silky vanilla cream.</p>
-        </div>
-        <div class="card">
-            <h3>Strawberry Dream Pastry</h3>
-            <p>Soft cream, fresh strawberries & fluffy layers.</p>
-        </div>
-        <div class="card">
-            <h3>Classic Butter Croissant</h3>
-            <p>Golden, flaky & perfectly baked every morning.</p>
-        </div>
-    </div>
+<h2>Our Favorites</h2>
+<div class="products">
+
+<div class="card">
+<h3>Rose Vanilla Cake</h3>
+<p>Light sponge layered with silky vanilla cream.</p>
+<div class="price">$15</div>
+<button class="btn" onclick="addToCart('Rose Vanilla Cake',15)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Strawberry Dream Pastry</h3>
+<p>Soft cream, fresh strawberries & fluffy layers.</p>
+<div class="price">$8</div>
+<button class="btn" onclick="addToCart('Strawberry Dream Pastry',8)">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>Classic Butter Croissant</h3>
+<p>Golden, flaky & perfectly baked every morning.</p>
+<div class="price">$5</div>
+<button class="btn" onclick="addToCart('Classic Butter Croissant',5)">Add to Cart</button>
+</div>
+
+</div>
 </section>
 
-<section class="section about" id="about">
-    <h2>Our Story</h2>
-    <p>Haus of Bakes was created with a passion for soft aesthetics and even softer pastries. 
-    We believe baking is an art of love, warmth, and delicate sweetness.</p>
-</section>
+<!-- CART SIDEBAR -->
+<div class="cart" id="cart">
+<button class="close-cart" onclick="toggleCart()">✖</button>
+<h3>Your Cart</h3>
+<div id="cart-items"></div>
+<div class="total">Total: $<span id="total">0</span></div>
+<button class="btn order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
+</div>
 
-<section class="section" id="contact">
-    <h2>Visit Us</h2>
-    <p>Email:hausofbakes0@gmail.com</p>
-    <p>Phone no : +9779817542617 </p>
-   <p> Facebook :https://www.facebook.com/share/v/1H6nErQoL4/</p>
-   <p> Butwal-11,Devinagar</p>
-   
-</section>
-<section class="section" id="location">
-    <h2>Our location: Butwal-11,Devinagar </h2>
 
-    <!-- Simple map showing Butwal-11,Devinagar -->
-    <iframe 
-        src="https://maps.google.com/maps?q=27.7006,83.4484&z=13&output=embed"
-        allowfullscreen>
-    </iframe>
+<section class="contact container" id="contact">
+<h2>Contact Haus of Bakes</h2>
+<div class="contact-info">
+<p>📞 Phone: <a href="tel:+9779765501697" class="contact-link">+977-9765501697</a></p>
+<p>📧 Email: <a href="mailto:acharyaprashant1000@gmail.com" class="contact-link">acharyaprashant1000@gmail.com</a></p>
+<p>🔵 Facebook: <a href="https://www.facebook.com/profile.php?id=61580987621616" target="_blank" class="contact-link">facebook.com/the-boys-shopping-centre</a></p>
+<p>📍 Location: Belbas, Butwal-13, Rupandehi, Nepal</p>
+</div>
+<br>
     
-</section>
 <footer>
-    © 2026 Haus of Bakes | Baked with love, served with joy
+© 2026 Haus of Bakes | Made with love & sugar
 </footer>
 
+<script>
+let cart = [];
+
+function toggleCart(){
+    document.getElementById("cart").classList.toggle("active");
+}
+
+function addToCart(name,price){
+    let existingItem = cart.find(item => item.name === name);
+
+    if(existingItem){
+        existingItem.quantity += 1;
+    }else{
+        cart.push({name,price,quantity:1});
+    }
+
+    updateCart();   // ONLY update count
+}
+
+function increaseQty(name){
+    let item = cart.find(item => item.name === name);
+    item.quantity += 1;
+    updateCart();
+}
+
+function decreaseQty(name){
+    let item = cart.find(item => item.name === name);
+    item.quantity -= 1;
+
+    if(item.quantity <= 0){
+        cart = cart.filter(i => i.name !== name);
+    }
+
+    updateCart();
+}
+
+function updateCart(){
+    let cartItems = document.getElementById("cart-items");
+    cartItems.innerHTML = "";
+
+    let total = 0;
+    let totalItems = 0;
+
+    cart.forEach(item=>{
+        total += item.price * item.quantity;
+        totalItems += item.quantity;
+
+        let div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+            <div>
+                <strong>${item.name}</strong><br>
+                $${item.price} each
+            </div>
+
+            <div class="quantity-controls">
+                <button class="qty-btn" onclick="decreaseQty('${item.name}')">−</button>
+                <span>${item.quantity}</span>
+                <button class="qty-btn" onclick="increaseQty('${item.name}')">+</button>
+            </div>
+        `;
+
+        cartItems.appendChild(div);
+    });
+
+    document.getElementById("cart-count").innerText = totalItems;
+    document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function orderViaWhatsApp(){
+    if(cart.length === 0){
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let message = "Hello Haus of Bakes! I would like to order:%0A";
+
+    cart.forEach(item=>{
+        message += `- ${item.name} x${item.quantity} ($${item.price * item.quantity})%0A`;
+    });
+
+    let total = cart.reduce((sum,item)=> sum + item.price * item.quantity,0);
+
+    message += `%0ATotal: $${total}%0A%0APlease confirm my order.`;
+
+    window.open(`https://wa.me/9779765501697?text=${message}`,'_blank');
+}
+</script>
+
+<a href="https://wa.me/9779765501697" 
+   class="whatsapp-float" 
+   target="_blank">
+   💬
+</a>
 </body>
 </html>
